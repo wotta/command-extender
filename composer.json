@@ -1,0 +1,54 @@
+{
+    "name": "wotta/command-extender",
+    "description": "A small package that adds extra commands that extend the default Laravel commands.",
+    "keywords": [
+        "wotta",
+        "command-extender"
+    ],
+    "homepage": "https://github.com/wotta/command-extender",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Wouter van Marrum",
+            "email": "wouter.van.marrum@protonmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.1",
+        "illuminate/support": "^6.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^4.0",
+        "phpunit/phpunit": "^8.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Wotta\\CommandExtender\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Wotta\\CommandExtender\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Wotta\\CommandExtender\\CommandExtenderServiceProvider"
+            ],
+            "aliases": {
+                "CommandExtender": "Wotta\\CommandExtender\\CommandExtenderFacade"
+            }
+        }
+    }
+}
