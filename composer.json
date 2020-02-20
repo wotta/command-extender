@@ -37,8 +37,8 @@
     "scripts": {
         "test": "vendor/bin/phpunit",
         "test-coverage": "vendor/bin/phpunit --coverage-html coverage",
-        "cs_ci": "vendor/bin/php-cs-fixer fix --config=.php_cs_laravel.php -v --dry-run --using-cache=no",
-        "cs_fix": "vendor/bin/php-cs-fixer fix --config=.php_cs_laravel.php"
+        "cs_ci": "vendor/bin/php-cs-fixer fix --config=.php_cs.laravel.php -v --dry-run --using-cache=no",
+        "cs_fix": "vendor/bin/php-cs-fixer fix --config=.php_cs.laravel.php"
     },
     "config": {
         "sort-packages": true
