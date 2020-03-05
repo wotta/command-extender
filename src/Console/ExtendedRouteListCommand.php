@@ -2,16 +2,16 @@
 
 namespace Wotta\CommandExtender\Console;
 
+use Composer\Autoload\ClassLoader;
+use Illuminate\Foundation\Console\RouteListCommand;
+use Illuminate\Routing\Router;
+use Illuminate\Support\Collection;
+use Illuminate\Support\Str;
 use ReflectionClass;
 use ReflectionException;
-use Illuminate\Support\Str;
-use Illuminate\Routing\Router;
-use Wotta\CommandExtender\Shell;
-use Composer\Autoload\ClassLoader;
-use Illuminate\Support\Collection;
-use Symfony\Component\Process\Process;
 use Symfony\Component\Console\Input\InputOption;
-use Illuminate\Foundation\Console\RouteListCommand;
+use Symfony\Component\Process\Process;
+use Wotta\CommandExtender\Shell;
 
 class ExtendedRouteListCommand extends RouteListCommand
 {
@@ -69,7 +69,6 @@ class ExtendedRouteListCommand extends RouteListCommand
 
     private function convertChoiceToClass($choice)
     {
-
         $choice = Str::after($choice, '<comment>');
         $choice = Str::before($choice, ':');
 
@@ -84,13 +83,13 @@ class ExtendedRouteListCommand extends RouteListCommand
             ->filter(function ($route) {
                 return $route['action'] !== 'Closure';
             })->filter(function ($route) use (&$files) {
-                if (!Str::contains($route['action'], '@')) {
+                if (! Str::contains($route['action'], '@')) {
                     return;
                 }
 
                 $file = explode('@', $route['action'])[0];
 
-                if (!$files->contains($file)) {
+                if (! $files->contains($file)) {
                     $files->push($file);
 
                     return $route;
@@ -110,7 +109,6 @@ class ExtendedRouteListCommand extends RouteListCommand
     {
         try {
             $reflector = new ReflectionClass($choice);
-
         } catch (ReflectionException $exception) {
             $this->error($exception->getMessage());
             exit;

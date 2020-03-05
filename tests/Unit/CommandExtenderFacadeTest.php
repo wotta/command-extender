@@ -2,9 +2,9 @@
 
 namespace Wotta\CommandExtender\Tests\Unit;
 
-use Wotta\CommandExtender\Tests\TestCase;
 use Wotta\CommandExtender\CommandExtender;
 use Wotta\CommandExtender\CommandExtenderFacade;
+use Wotta\CommandExtender\Tests\TestCase;
 
 class CommandExtenderFacadeTest extends TestCase
 {

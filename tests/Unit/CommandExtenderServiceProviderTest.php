@@ -2,8 +2,8 @@
 
 namespace Wotta\CommandExtender\Tests\Unit;
 
-use Wotta\CommandExtender\Tests\TestCase;
 use Wotta\CommandExtender\CommandExtender;
+use Wotta\CommandExtender\Tests\TestCase;
 
 class CommandExtenderServiceProviderTest extends TestCase
 {
