@@ -2,14 +2,14 @@
 
 namespace Wotta\CommandExtender\Console;
 
+use Illuminate\Foundation\Console\RouteListCommand;
+use Illuminate\Routing\Router;
+use Illuminate\Support\Collection;
+use Illuminate\Support\Str;
 use ReflectionClass;
 use ReflectionException;
-use Illuminate\Support\Str;
-use Illuminate\Routing\Router;
-use Wotta\CommandExtender\Shell;
-use Illuminate\Support\Collection;
 use Symfony\Component\Console\Input\InputOption;
-use Illuminate\Foundation\Console\RouteListCommand;
+use Wotta\CommandExtender\Shell;
 
 class ExtendedRouteListCommand extends RouteListCommand
 {
