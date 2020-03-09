@@ -2,16 +2,14 @@
 
 namespace Wotta\CommandExtender\Console;
 
-use Composer\Autoload\ClassLoader;
-use Illuminate\Foundation\Console\RouteListCommand;
-use Illuminate\Routing\Router;
-use Illuminate\Support\Collection;
-use Illuminate\Support\Str;
 use ReflectionClass;
 use ReflectionException;
-use Symfony\Component\Console\Input\InputOption;
-use Symfony\Component\Process\Process;
+use Illuminate\Support\Str;
+use Illuminate\Routing\Router;
 use Wotta\CommandExtender\Shell;
+use Illuminate\Support\Collection;
+use Symfony\Component\Console\Input\InputOption;
+use Illuminate\Foundation\Console\RouteListCommand;
 
 class ExtendedRouteListCommand extends RouteListCommand
 {
@@ -39,7 +37,9 @@ class ExtendedRouteListCommand extends RouteListCommand
 
             $file = $this->getFileNameFromClass($this->convertChoiceToClass($choice));
 
-            $this->tryToOpenFileWithEditor($file);
+            if (! $this->canOpenFileWithEditor($file)) {
+                $this->error('Could not open file in editor because not editor was set.');
+            }
 
             return;
         }
@@ -63,6 +63,7 @@ class ExtendedRouteListCommand extends RouteListCommand
             [
                 'action' => ['action', null, InputOption::VALUE_OPTIONAL, 'Filter the routes by action'],
                 'open' => ['open', 'o', InputOption::VALUE_NONE, 'Open the corresponding file for the selected route'],
+                'editor' => ['editor', 'e', InputOption::VALUE_OPTIONAL, 'Editor path that will be used to open files'],
             ]
         );
     }
@@ -117,32 +118,24 @@ class ExtendedRouteListCommand extends RouteListCommand
         return $reflector->getFileName();
     }
 
-    private function tryToOpenFileWithEditor(string $file)
+    private function canOpenFileWithEditor(string $file): bool
     {
-        if (config('command-extender.editor.cli')) {
-            $this->shell->exec(
-                sprintf(
-                    '%s %s',
-                    config('command-extender.editor.cli'),
-                    $file
-                )
-            );
+        $editor = $this->option('editor') ??
+            config('command-extender.editor.cli') ??
+            config('command-extender.editor.path') ??
+            false;
 
-            return true;
+        if (! $editor) {
+            return false;
         }
 
-        if (config('command-extender.editor.path')) {
-            $this->shell->exec(
-                sprintf(
-                    '%s %s',
-                    config('command-extender.editor.path'),
-                    $file
-                )
-            );
+        $this->shell->exec(
+            sprintf('%s %s',
+                $editor,
+                $file
+            )
+        );
 
-            return true;
-        }
-
-        return false;
+        return true;
     }
 }
