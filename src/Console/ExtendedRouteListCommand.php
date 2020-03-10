@@ -33,7 +33,11 @@ class ExtendedRouteListCommand extends RouteListCommand
         if ($this->option('open')) {
             $choices = $this->filterFileChoices($routes);
 
-            $choice = $this->choice('Which file would you like to open?', $choices->values()->all());
+            $choice = $choices->values()->first();
+
+            if ($choices->values()->count() > 1) {
+                $choice = $this->choice('Which file would you like to open?', $choices->values()->all());
+            }
 
             $file = $this->getFileNameFromClass($this->convertChoiceToClass($choice));
 
