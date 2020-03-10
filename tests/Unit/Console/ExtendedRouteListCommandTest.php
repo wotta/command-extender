@@ -2,6 +2,7 @@
 
 namespace Wotta\CommandExtender\Tests\Unit;
 
+use Illuminate\Support\Facades\Artisan;
 use Wotta\CommandExtender\Tests\TestCase;
 
 class ExtendedRouteListCommandTest extends TestCase
@@ -21,8 +22,6 @@ class ExtendedRouteListCommandTest extends TestCase
     {
         $this->markTestSkipped('Cannot really run this test while getting a early exit code.');
 
-        $this->artisan('route:list', ['--open' => null, '--editor' => 'vim'])
-            ->expectsQuestion('Which file would you like to open?', 1)
-            ->assertExitCode(0);
+        Artisan::call('route:list', ['--open' => null]);
     }
 }
