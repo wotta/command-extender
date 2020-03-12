@@ -1,6 +1,6 @@
 <?php
 
-namespace Wotta\CommandExtender\Console;
+namespace Wotta\CommandExtender\Console\Extended;
 
 use Illuminate\Routing\Console\ControllerMakeCommand;
 use Symfony\Component\Console\Input\InputOption;
@@ -9,8 +9,13 @@ class MakeControllerCommand extends ControllerMakeCommand
 {
     protected function getStub(): string
     {
-        // Check if we have our own stuff that we need to handle.
-        return parent::getStub();
+        $stub = parent::getStub();
+
+        if ($this->option('mixed')) {
+            $stub = __DIR__.'/stubs/controller.mixed.stub';
+        }
+
+        return $stub;
     }
 
     protected function getOptions(): array
