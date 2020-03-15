@@ -3,6 +3,7 @@
 namespace Wotta\CommandExtender;
 
 use Illuminate\Support\ServiceProvider;
+use Wotta\CommandExtender\Console\Extended\MakeControllerCommand;
 use Wotta\CommandExtender\Console\Extended\RouteListCommand;
 
 class CommandExtenderServiceProvider extends ServiceProvider
@@ -13,6 +14,7 @@ class CommandExtenderServiceProvider extends ServiceProvider
 
     protected $extendedCommands = [
         'command.route.list' => RouteListCommand::class,
+        'command.controller.make' => MakeControllerCommand::class,
     ];
 
     public function boot(): void
