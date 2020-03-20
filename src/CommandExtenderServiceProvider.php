@@ -10,6 +10,7 @@ class CommandExtenderServiceProvider extends ServiceProvider
 {
     protected $commands = [
         RouteListCommand::class,
+        MakeControllerCommand::class,
     ];
 
     protected $extendedCommands = [
