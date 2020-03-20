@@ -16,47 +16,7 @@ class MakeControllerCommand extends ControllerMakeCommand
     public function handle()
     {
         if ($this->option('mixed')) {
-            while (! $this->option('model')) {
-                $this->error('We need an model');
-                $this->input->setOption('model', $this->ask('What\'s the model?'));
-            }
-
-            $originalName = $this->argument('name');
-            $originalOutput = $this->getOutput();
-
-            $this->info(
-                sprintf(
-                    'Generating %s%s.',
-                    $name = $this->argument('name'),
-                    Str::contains($name, 'Controller') ? '\'s' : ' controllers'
-                )
-            );
-
-            $this->call(
-                'make:controller',
-                [
-                    'name' => 'Api/'.$this->argument('name'),
-                    '--model' => $this->option('model'),
-                    '--mixed-api' => true,
-                    '--force' => $this->option('force'),
-                ]
-            );
-
-            $this->setOutput($originalOutput);
-
-            $this->call(
-                'make:controller',
-                [
-                    'name' => $originalName,
-                    '--model' => $this->option('model'),
-                    '--mixed-web' => true,
-                    '--force' => $this->option('force'),
-                ]
-            );
-
-            $this->setOutput($originalOutput);
-
-            return true;
+            return $this->generateMixedControllers();
         }
 
         return parent::handle();
@@ -84,5 +44,73 @@ class MakeControllerCommand extends ControllerMakeCommand
             ['mixed-web', null, InputOption::VALUE_NONE, 'Create a web controller for the mixed option'],
             ['mixed-api', null, InputOption::VALUE_NONE, 'Create a api controller for the mixed option'],
         ]);
+    }
+
+    private function generateMixedControllers(): bool
+    {
+        $this->askModel();
+
+        $originalName = $this->argument('name');
+        $originalOutput = $this->getOutput();
+
+        $attributes = $this->getCommandAttributes();
+
+        $this->displayInformationTest();
+
+        $this->callCommand('make:controller', $attributes, function () use ($originalOutput) {
+            $this->setOutput($originalOutput);
+        });
+
+        $attributes['name'] = $originalName;
+        $attributes['--mixed-web'] = true;
+
+        unset($attributes['--mixed-api']);
+
+        $this->callCommand('make:controller', $attributes);
+
+        $this->setOutput($originalOutput);
+
+        return true;
+    }
+
+    private function askModel(): void
+    {
+        while (! $this->option('model')) {
+            $this->error('We need an model');
+            $this->input->setOption('model', $this->ask('What\'s the model?'));
+        }
+    }
+
+    private function displayInformationTest(): void
+    {
+        $this->info(
+            sprintf(
+                'Generating %s%s.',
+                $name = $this->argument('name'),
+                Str::contains($name, 'Controller') ? '\'s' : ' controllers'
+            )
+        );
+    }
+
+    private function getCommandAttributes(): array
+    {
+        return [
+            'name' => 'Api/'.$this->argument('name'),
+            '--model' => $this->option('model'),
+            '--mixed-api' => true,
+            '--force' => $this->option('force'),
+        ];
+    }
+
+    private function callCommand(string $command, array $attributes = [], callable $callback = null): void
+    {
+        $this->call(
+            $command,
+            $attributes
+        );
+
+        if ($callback) {
+            call_user_func($callback);
+        }
     }
 }
