@@ -4,6 +4,7 @@ namespace Wotta\CommandExtender\Console\Extended;
 
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Routing\Console\ControllerMakeCommand;
+use Illuminate\Support\Str;
 use Symfony\Component\Console\Input\InputOption;
 
 class MakeControllerCommand extends ControllerMakeCommand
@@ -23,7 +24,15 @@ class MakeControllerCommand extends ControllerMakeCommand
             $originalName = $this->argument('name');
             $originalOutput = $this->getOutput();
 
-            $generated = $this->callSilent(
+            $this->info(
+                sprintf(
+                    'Generating %s%s.',
+                    $name = $this->argument('name'),
+                    Str::contains($name, 'Controller') ? '\'s' : ' controllers'
+                )
+            );
+
+            $this->call(
                 'make:controller',
                 [
                     'name' => 'Api/'.$this->argument('name'),
@@ -35,11 +44,7 @@ class MakeControllerCommand extends ControllerMakeCommand
 
             $this->setOutput($originalOutput);
 
-            if ($generated === 0) {
-                $this->info(sprintf('%s created successfully.', $this->argument('name')));
-            }
-
-            $generated = $this->callSilent(
+            $this->call(
                 'make:controller',
                 [
                     'name' => $originalName,
@@ -50,10 +55,6 @@ class MakeControllerCommand extends ControllerMakeCommand
             );
 
             $this->setOutput($originalOutput);
-
-            if ($generated === 0) {
-                $this->info(sprintf('%s created successfully.', $this->argument('name')));
-            }
 
             return true;
         }
