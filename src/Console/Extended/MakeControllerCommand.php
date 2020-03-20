@@ -98,7 +98,7 @@ class MakeControllerCommand extends ControllerMakeCommand
             'name' => 'Api/'.$this->argument('name'),
             '--model' => $this->option('model'),
             '--mixed-api' => true,
-            '--force' => $this->option('force'),
+            '--force' => $this->hasOption('force') ? $this->option('force') : false,
         ];
     }
 
