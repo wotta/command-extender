@@ -1,11 +1,11 @@
 <?php
 
-namespace Wotta\CommandExtender\Tests\Unit;
+namespace Wotta\CommandExtender\Tests\Unit\Console\Extended;
 
 use Illuminate\Support\Facades\Artisan;
 use Wotta\CommandExtender\Tests\TestCase;
 
-class ExtendedRouteListCommandTest extends TestCase
+class RouteListCommandTest extends TestCase
 {
     /** @test */
     public function route_list_command_has_action_option(): void

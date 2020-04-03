@@ -1,8 +1,8 @@
 <?php
 
-namespace Wotta\CommandExtender\Console;
+namespace Wotta\CommandExtender\Console\Extended;
 
-use Illuminate\Foundation\Console\RouteListCommand;
+use Illuminate\Foundation\Console\RouteListCommand as BaseRouteListCommand;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
@@ -11,7 +11,7 @@ use ReflectionException;
 use Symfony\Component\Console\Input\InputOption;
 use Wotta\CommandExtender\Shell;
 
-class ExtendedRouteListCommand extends RouteListCommand
+class RouteListCommand extends BaseRouteListCommand
 {
     /** @var Shell */
     private $shell;
