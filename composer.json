@@ -1,11 +1,12 @@
 {
-    "name": "wotta/command-extender",
-    "description": "A small package that adds extra commands that extend the default Laravel commands.",
+    "name": "wotta/illuminate-extender",
+    "description": "A small package that extends the base Laravel core functionality.",
     "keywords": [
         "wotta",
-        "command-extender"
+        "illuminate-extender",
+        "laravel"
     ],
-    "homepage": "https://github.com/wotta/command-extender",
+    "homepage": "https://github.com/wotta/illuminate-extender",
     "license": "MIT",
     "type": "library",
     "authors": [
@@ -17,7 +18,7 @@
     ],
     "require": {
         "php": "^7.1",
-        "illuminate/support": "^6.0"
+        "illuminate/support": "^6.0|^7.0"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^2.16",
@@ -26,19 +27,19 @@
     },
     "autoload": {
         "psr-4": {
-            "Wotta\\CommandExtender\\": "src"
+            "Wotta\\IlluminateExtender\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Wotta\\CommandExtender\\Tests\\": "tests"
+            "Wotta\\IlluminateExtender\\Tests\\": "tests"
         }
     },
     "scripts": {
         "test": "vendor/bin/phpunit",
         "test-coverage": "vendor/bin/phpunit --coverage-html coverage",
-        "cs_ci": "vendor/bin/php-cs-fixer fix --config=.php_cs.laravel.php -v --dry-run --using-cache=no",
-        "cs_fix": "vendor/bin/php-cs-fixer fix --config=.php_cs.laravel.php"
+        "cs_ci": "vendor/bin/php-cs-fixer fix --config=.php_cs.dist -v --dry-run --using-cache=no",
+        "cs_fix": "vendor/bin/php-cs-fixer fix --config=.php_cs.dist"
     },
     "config": {
         "sort-packages": true
@@ -46,10 +47,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Wotta\\CommandExtender\\CommandExtenderServiceProvider"
+                "Wotta\\IlluminateExtender\\IlluminateExtenderServiceProvider"
             ],
             "aliases": {
-                "CommandExtender": "Wotta\\CommandExtender\\CommandExtenderFacade"
+                "IlluminateExtender": "Wotta\\IlluminateExtender\\CommandExtenderFacade"
             }
         }
     }

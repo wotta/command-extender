@@ -1,24 +1,53 @@
-# Very short description of the package
+# Command Extender
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/wotta/command-extender.svg?style=flat-square)](https://packagist.org/packages/wotta/command-extender)
-[![Build Status](https://img.shields.io/travis/wotta/command-extender/master.svg?style=flat-square)](https://travis-ci.org/wotta/command-extender)
-[![Package](https://github.com/wotta/command-extender/workflows/Package/badge.svg)](https://github.com/wotta/command-extender)
-[![Total Downloads](https://img.shields.io/packagist/dt/wotta/command-extender.svg?style=flat-square)](https://packagist.org/packages/wotta/command-extender)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/wotta/illuminate-extender.svg?style=flat-square)](https://packagist.org/packages/wotta/illuminate-extender)
+[![Build Status](https://img.shields.io/travis/wotta/illuminate-extender/master.svg?style=flat-square)](https://travis-ci.org/wotta/illuminate-extender)
+[![Package](https://github.com/wotta/illuminate-extender/workflows/Package/badge.svg)](https://github.com/wotta/illuminate-extender)
+[![Total Downloads](https://img.shields.io/packagist/dt/wotta/illuminate-extender.svg?style=flat-square)](https://packagist.org/packages/wotta/illuminate-extender)
 
-This is where your description should go. Try and limit it to a paragraph or two, and maybe throw in a mention of what PSRs you support to avoid any confusion with users and contributors.
+A small package that extends the core Laravel features.
+
+*Why command-extender?:*
+- The ability to have extra functionality while still preserving all core code from Laravel.
+- New commands that help with developing while working in the cli. 
 
 ## Installation
 
 You can install the package via composer:
 
 ```bash
-composer require wotta/command-extender
+composer require wotta/illuminate-extender
+```
+
+```bash
+php artisan vendor:publish --tag=illuminate-extender
 ```
 
 ## Usage
 
-``` php
-// Usage description here
+To use the new action filter for the `artisan route:list` command you need to do the following:
+
+```bash
+php artisan route:list --action=SomeController
+```
+
+There is also an option added to open files based on the current filters.
+
+```bash
+php artisan route:list --action=SomeController -o
+```
+
+This will result in the following output from which you can choose a file if there are results:
+```bash
+Which file would you like to open?:
+  [0] App\Http\Controllers\HomeController: for route "home"
+  [1] App\Http\Controllers\UsersController: for route "users"
+```
+
+If you haven't published the config file and set a default editor you can always add the `--editor` option to pass a editor.
+
+```bash
+php artisan route:list --action=SomeController -o --editor=vim
 ```
 
 ### Testing
