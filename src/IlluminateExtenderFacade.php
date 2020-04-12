@@ -1,11 +1,11 @@
 <?php
 
-namespace Wotta\CommandExtender;
+namespace Wotta\IlluminateExtender;
 
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @see \Wotta\CommandExtender\IlluminateExtender
+ * @see \Wotta\IlluminateExtender\IlluminateExtender
  */
 class IlluminateExtenderFacade extends Facade
 {

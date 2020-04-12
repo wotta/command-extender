@@ -1,6 +1,6 @@
 <?php
 
-namespace Wotta\CommandExtender;
+namespace Wotta\IlluminateExtender;
 
 class IlluminateExtender
 {

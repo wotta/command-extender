@@ -1,9 +1,9 @@
 <?php
 
-namespace Wotta\CommandExtender\Tests\Unit\Console\Extended;
+namespace Wotta\IlluminateExtender\Tests\Unit\Console\Extended;
 
 use Illuminate\Support\Facades\File;
-use Wotta\CommandExtender\Tests\TestCase;
+use Wotta\IlluminateExtender\Tests\TestCase;
 
 class MakeControllerCommandTest extends TestCase
 {

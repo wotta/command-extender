@@ -1,6 +1,6 @@
 <?php
 
-namespace Wotta\CommandExtender;
+namespace Wotta\IlluminateExtender;
 
 use Symfony\Component\Process\Exception\ProcessFailedException;
 use Symfony\Component\Process\Process;

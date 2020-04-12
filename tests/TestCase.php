@@ -1,9 +1,9 @@
 <?php
 
-namespace Wotta\CommandExtender\Tests;
+namespace Wotta\IlluminateExtender\Tests;
 
 use Orchestra\Testbench\TestCase as BaseTestCase;
-use Wotta\CommandExtender\IlluminateExtenderServiceProvider;
+use Wotta\IlluminateExtender\IlluminateExtenderServiceProvider;
 
 class TestCase extends BaseTestCase
 {

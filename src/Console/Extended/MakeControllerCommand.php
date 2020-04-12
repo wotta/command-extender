@@ -1,6 +1,6 @@
 <?php
 
-namespace Wotta\CommandExtender\Console\Extended;
+namespace Wotta\IlluminateExtender\Console\Extended;
 
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Routing\Console\ControllerMakeCommand;

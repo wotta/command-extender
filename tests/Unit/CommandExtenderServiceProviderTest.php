@@ -1,9 +1,9 @@
 <?php
 
-namespace Wotta\CommandExtender\Tests\Unit;
+namespace Wotta\IlluminateExtender\Tests\Unit;
 
-use Wotta\CommandExtender\IlluminateExtender;
-use Wotta\CommandExtender\Tests\TestCase;
+use Wotta\IlluminateExtender\IlluminateExtender;
+use Wotta\IlluminateExtender\Tests\TestCase;
 
 class CommandExtenderServiceProviderTest extends TestCase
 {

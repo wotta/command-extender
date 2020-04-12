@@ -1,6 +1,6 @@
 <?php
 
-namespace Wotta\CommandExtender\Console\Extended;
+namespace Wotta\IlluminateExtender\Console\Extended;
 
 use Illuminate\Foundation\Console\RouteListCommand as BaseRouteListCommand;
 use Illuminate\Routing\Router;
@@ -9,7 +9,7 @@ use Illuminate\Support\Str;
 use ReflectionClass;
 use ReflectionException;
 use Symfony\Component\Console\Input\InputOption;
-use Wotta\CommandExtender\Shell;
+use Wotta\IlluminateExtender\Shell;
 
 class RouteListCommand extends BaseRouteListCommand
 {

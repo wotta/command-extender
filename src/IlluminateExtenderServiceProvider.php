@@ -1,10 +1,10 @@
 <?php
 
-namespace Wotta\CommandExtender;
+namespace Wotta\IlluminateExtender;
 
 use Illuminate\Support\ServiceProvider;
-use Wotta\CommandExtender\Console\Extended\MakeControllerCommand;
-use Wotta\CommandExtender\Console\Extended\RouteListCommand;
+use Wotta\IlluminateExtender\Console\Extended\MakeControllerCommand;
+use Wotta\IlluminateExtender\Console\Extended\RouteListCommand;
 
 class IlluminateExtenderServiceProvider extends ServiceProvider
 {

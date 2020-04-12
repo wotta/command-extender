@@ -1,10 +1,10 @@
 <?php
 
-namespace Wotta\CommandExtender\Tests\Unit;
+namespace Wotta\IlluminateExtender\Tests\Unit;
 
-use Wotta\CommandExtender\IlluminateExtender;
-use Wotta\CommandExtender\IlluminateExtenderFacade;
-use Wotta\CommandExtender\Tests\TestCase;
+use Wotta\IlluminateExtender\IlluminateExtender;
+use Wotta\IlluminateExtender\IlluminateExtenderFacade;
+use Wotta\IlluminateExtender\Tests\TestCase;
 
 class CommandExtenderFacadeTest extends TestCase
 {

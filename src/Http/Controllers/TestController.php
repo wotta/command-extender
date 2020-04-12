@@ -1,6 +1,6 @@
 <?php
 
-namespace Wotta\CommandExtender\Http\Controllers;
+namespace Wotta\IlluminateExtender\Http\Controllers;
 
 class TestController extends \Illuminate\Routing\Controller
 {
