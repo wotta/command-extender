@@ -28,7 +28,7 @@ class IlluminateExtenderServiceProvider extends ServiceProvider
             $this->commands($this->commands);
 
             if ($this->app->runningUnitTests()) {
-                $this->loadRoutesFrom(__DIR__.'/../routes/test.php');
+                $this->loadRoutesFrom(__DIR__.'/../tests/Fixtures/routes/test.php');
             }
         }
     }
@@ -46,6 +46,5 @@ class IlluminateExtenderServiceProvider extends ServiceProvider
                 return $this->app->make($extendedCommand);
             });
         }
-
     }
 }
