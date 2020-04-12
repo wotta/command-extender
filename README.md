@@ -1,11 +1,11 @@
 # Command Extender
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/wotta/command-extender.svg?style=flat-square)](https://packagist.org/packages/wotta/command-extender)
-[![Build Status](https://img.shields.io/travis/wotta/command-extender/master.svg?style=flat-square)](https://travis-ci.org/wotta/command-extender)
-[![Package](https://github.com/wotta/command-extender/workflows/Package/badge.svg)](https://github.com/wotta/command-extender)
-[![Total Downloads](https://img.shields.io/packagist/dt/wotta/command-extender.svg?style=flat-square)](https://packagist.org/packages/wotta/command-extender)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/wotta/illuminate-extender.svg?style=flat-square)](https://packagist.org/packages/wotta/illuminate-extender)
+[![Build Status](https://img.shields.io/travis/wotta/illuminate-extender/master.svg?style=flat-square)](https://travis-ci.org/wotta/illuminate-extender)
+[![Package](https://github.com/wotta/illuminate-extender/workflows/Package/badge.svg)](https://github.com/wotta/illuminate-extender)
+[![Total Downloads](https://img.shields.io/packagist/dt/wotta/illuminate-extender.svg?style=flat-square)](https://packagist.org/packages/wotta/illuminate-extender)
 
-A small package that adds extra commands that extend the default Laravel commands.
+A small package that extends the core Laravel features.
 
 *Why command-extender?:*
 - The ability to have extra functionality while still preserving all core code from Laravel.
@@ -16,11 +16,11 @@ A small package that adds extra commands that extend the default Laravel command
 You can install the package via composer:
 
 ```bash
-composer require wotta/command-extender
+composer require wotta/illuminate-extender
 ```
 
 ```bash
-php artisan vendor:publish --tag=command-extender
+php artisan vendor:publish --tag=illuminate-extender
 ```
 
 ## Usage
