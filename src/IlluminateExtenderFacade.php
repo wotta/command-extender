@@ -5,12 +5,12 @@ namespace Wotta\CommandExtender;
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @see \Wotta\CommandExtender\CommandExtender
+ * @see \Wotta\CommandExtender\IlluminateExtender
  */
-class CommandExtenderFacade extends Facade
+class IlluminateExtenderFacade extends Facade
 {
     protected static function getFacadeAccessor(): string
     {
-        return CommandExtender::class;
+        return IlluminateExtender::class;
     }
 }

@@ -6,7 +6,7 @@ use Illuminate\Support\ServiceProvider;
 use Wotta\CommandExtender\Console\Extended\MakeControllerCommand;
 use Wotta\CommandExtender\Console\Extended\RouteListCommand;
 
-class CommandExtenderServiceProvider extends ServiceProvider
+class IlluminateExtenderServiceProvider extends ServiceProvider
 {
     protected $commands = [
         RouteListCommand::class,
@@ -22,8 +22,8 @@ class CommandExtenderServiceProvider extends ServiceProvider
     {
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__.'/../config/config.php' => config_path('command-extender.php'),
-            ], 'command-extender');
+                __DIR__.'/../config/config.php' => config_path('illuminate-extender.php'),
+            ], 'illuminate-extender');
 
             $this->commands($this->commands);
 
@@ -35,10 +35,10 @@ class CommandExtenderServiceProvider extends ServiceProvider
 
     public function register(): void
     {
-        $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'command-extender');
+        $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'illuminate-extender');
 
-        $this->app->singleton('command-extender', function () {
-            return new CommandExtender;
+        $this->app->singleton('illuminate-extender', function () {
+            return new IlluminateExtender;
         });
 
         foreach ($this->extendedCommands as $abstract => $extendedCommand) {

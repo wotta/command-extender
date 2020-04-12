@@ -2,7 +2,7 @@
 
 namespace Wotta\CommandExtender;
 
-class CommandExtender
+class IlluminateExtender
 {
     // Build your next great package.
 }
