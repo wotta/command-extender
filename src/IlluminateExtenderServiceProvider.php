@@ -3,6 +3,7 @@
 namespace Wotta\IlluminateExtender;
 
 use Illuminate\Support\ServiceProvider;
+use Wotta\IlluminateExtender\Console\Extended\KeyGenerateCommand;
 use Wotta\IlluminateExtender\Console\Extended\MakeControllerCommand;
 use Wotta\IlluminateExtender\Console\Extended\RouteListCommand;
 
@@ -11,11 +12,13 @@ class IlluminateExtenderServiceProvider extends ServiceProvider
     protected $commands = [
         RouteListCommand::class,
         MakeControllerCommand::class,
+        KeyGenerateCommand::class,
     ];
 
     protected $extendedCommands = [
         'command.route.list' => RouteListCommand::class,
         'command.controller.make' => MakeControllerCommand::class,
+        'command.key.generate' => KeyGenerateCommand::class,
     ];
 
     public function boot(): void
