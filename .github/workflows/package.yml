@@ -23,4 +23,4 @@ jobs:
               env:
                   DB_CONNECTION: sqlite
                   DB_DATABASE: .database/database.sqlite
-              run: composer test
+              run: php vendor/bin/phpunit
