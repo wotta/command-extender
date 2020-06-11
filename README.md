@@ -40,8 +40,9 @@ php artisan route:list --action=SomeController -o
 This will result in the following output from which you can choose a file if there are results:
 ```bash
 Which file would you like to open?:
-  [0] App\Http\Controllers\HomeController: for route "home"
-  [1] App\Http\Controllers\UsersController: for route "users"
+  [0] App\Http\Controllers\api\UsersController: for route "api/users"
+  [1] App\Http\Controllers\UsersController: for route "user"
+  [2] App\Http\Controllers\HomeController: for route "home"
 ```
 
 If you haven't published the config file and set a default editor you can always add the `--editor` option to pass a editor.

@@ -11,7 +11,7 @@ class Shell
     {
         /** @var Process $process */
         $process = app()->make(Process::class, [
-            'command' => $command,
+            'command' => explode(' ', $command),
         ]);
 
         $process->setTimeout(null);

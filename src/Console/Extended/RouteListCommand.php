@@ -92,10 +92,8 @@ class RouteListCommand extends BaseRouteListCommand
                     return;
                 }
 
-                $file = explode('@', $route['action'])[0];
-
-                if (! $files->contains($file)) {
-                    $files->push($file);
+                if (! $files->contains($route['action'])) {
+                    $files->push($route['action']);
 
                     return $route;
                 }
